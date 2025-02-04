@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Step Progress Circular Indicator -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:trackColor="@color/progress_background"
+        app:trackThickness="16dp"
+        app:indicatorColor="@color/primary"
+        app:indicatorSize="250dp"
+        android:progress="50"/>
+
+    <!-- Steps Count -->
+    <TextView
+        android:id="@+id/stepCountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/progressIndicator"
+        app:layout_constraintBottom_toBottomOf="@id/progressIndicator"
+        app:layout_constraintStart_toStartOf="@id/progressIndicator"
+        app:layout_constraintEnd_toEndOf="@id/progressIndicator"
+        android:text="0"
+        android:textColor="@color/primary"
+        style="@style/TextAppearance.DisplayMedium"/>
+
+    <!-- Metrics Cards -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/progressIndicator"
+        android:layout_marginTop="32dp">
+
+        <!-- Calories Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/distanceCard"
+            app:layout_constraintWidth_percent="0.48"
+            app:cardBackgroundColor="@color/primary_container"
+            android:layout_marginEnd="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_calories"
+                    android:tint="@color/primary"/>
+
+                <TextView
+                    android:id="@+id/caloriesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="0 kcal"
+                    style="@style/TextAppearance.BodyLarge"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Distance Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/distanceCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/caloriesCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.48"
+            app:cardBackgroundColor="@color/primary_container"
+            android:layout_marginStart="8dp">
+
+            <!-- Similar structure as calories card -->
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Today's Progress"
+        app:icon="@drawable/ic_run"
+        app:iconTint="@color/on_primary"
+        android:backgroundTint="@color/primary"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
