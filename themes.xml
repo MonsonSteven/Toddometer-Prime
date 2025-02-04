@@ -1,0 +1,22 @@
+<style name="Theme.FitnessTracker" parent="Theme.Material3.DynamicColors.DayNight">
+    <!-- Primary colors -->
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorOnPrimary">@color/on_primary</item>
+    <item name="colorPrimaryContainer">@color/primary_container</item>
+    
+    <!-- Surface colors -->
+    <item name="colorSurface">@color/surface</item>
+    <item name="colorOnSurface">@color/on_surface</item>
+    
+    <!-- Typography -->
+    <item name="textAppearanceBodyLarge">@style/TextAppearance.BodyLarge</item>
+    <item name="textAppearanceDisplayMedium">@style/TextAppearance.DisplayMedium</item>
+</style>
+
+<style name="TextAppearance.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+    <item name="fontFamily">@font/roboto</item>
+</style>
+
+<style name="TextAppearance.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+    <item name="fontFamily">@font/roboto_bold</item>
+</style>
