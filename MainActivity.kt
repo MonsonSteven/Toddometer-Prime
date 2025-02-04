@@ -24,6 +24,23 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         unregisterReceiver(updateReceiver)
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        
+        // Initialize UI elements
+        val progressIndicator: CircularProgressIndicator = findViewById(R.id.progressIndicator)
+        val stepCountText: TextView = findViewById(R.id.stepCountText)
+        val caloriesText: TextView = findViewById(R.id.caloriesText)
+        val distanceText: TextView = findViewById(R.id.distanceText)
+        
+        // Setup FAB
+        val fab: ExtendedFloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            // Show detailed progress dialog
+            showProgressDialog()
+        }
+        
 
     private fun updateUI() {
         val sharedPref = getSharedPreferences("FitnessData", MODE_PRIVATE)
