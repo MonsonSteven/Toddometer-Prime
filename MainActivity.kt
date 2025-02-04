@@ -51,3 +51,31 @@ class MainActivity : AppCompatActivity() {
         stepTextView.text = "Steps: $dailySteps\nCalories: $calories kcal\nDistance: $distance km"
     }
 }
+   }
+
+    private fun updateUI() {
+        val sharedPref = getSharedPreferences("FitnessData", MODE_PRIVATE)
+        val dailySteps = sharedPref.getInt("dailySteps", 0)
+        val goal = 10000 // Default daily goal
+        
+        // Update progress indicator
+        progressIndicator.progress = (dailySteps.toFloat() / goal * 100).toInt()
+        stepCountText.text = NumberFormat.getNumberInstance().format(dailySteps)
+        
+        // Update metrics
+        val calories = (dailySteps * 0.04).toInt()
+        val distance = (dailySteps * 0.000762).toInt()
+        
+        caloriesText.text = getString(R.string.calories_format, calories)
+        distanceText.text = getString(R.string.distance_format, distance)
+    }
+
+    private fun showProgressDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Today's Progress")
+            .setMessage("Steps: ${NumberFormat.getNumberInstance().format(dailySteps)}\n" +
+                      "Calories: $calories kcal\nDistance: $distance km")
+            .setPositiveButton("Great!") { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+}
